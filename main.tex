@@ -1,0 +1,125 @@
+\documentclass[
+    paper=a4,
+    fontsize=12pt,
+    ngerman,
+    english
+]{scrreprt}
+
+\input{config.tex}
+\addbibresource{refs.bib}
+
+% === Header / Footer for normal pages =======================
+\setlength\headheight{24pt}
+\setlength\footheight{15pt}
+\ihead{}
+\chead{}
+\ohead{\textbf{\headmark}}
+\cfoot*{\pagemark}
+\automark{chapter}
+\KOMAoptions{headsepline=.4pt:19\textwidth}
+
+\begin{document}
+
+% ============================================================
+% TITELSEITE
+% ============================================================
+\begin{titlepage}
+    \thispagestyle{empty}
+    \centering
+
+    \vspace*{3.2cm}
+
+    {\bfseries\fontsize{20}{24}\selectfont\thesistitle\par}
+
+    \vspace{2.1cm}
+
+    {\fontsize{16}{20}\selectfont\thesisauthor\par}
+
+    \vspace{2.0cm}
+
+    {\fontsize{16}{20}\selectfont Bachelorarbeit in Physik angefertigt im\par}
+
+    \vspace{0.8cm}
+
+    {\fontsize{16}{20}\selectfont\inInstitute\par}
+
+    \vspace{2.0cm}
+
+    {\fontsize{16}{20}\selectfont
+    vorgelegt der Mathematisch-Naturwissenschaftlichen Fakultät\par}
+
+    \vspace{0.6cm}
+
+    {\fontsize{16}{20}\selectfont der\par}
+
+    \vspace{1.0cm}
+
+    {\fontsize{16}{20}\selectfont
+    Rheinischen Friedrich-Wilhelms-Universität Bonn\par}
+
+    \vspace{2.0cm}
+
+    {\fontsize{16}{20}\selectfont\thesismonth\ \thesisyear\par}
+
+    \vfill
+\end{titlepage}
+
+% ============================================================
+% EIDESSTATTLICHE ERKLÄRUNG / UNTERSCHRIFTSEITE
+% ============================================================
+\clearpage
+\thispagestyle{empty}
+\mbox{}
+\vfill
+
+\noindent
+Ich versichere, dass ich diese Arbeit selbstständig verfasst und keine anderen
+als die angegebenen Quellen und Hilfsmittel benutzt sowie die Zitate kenntlich
+gemacht habe.
+
+\vspace{2.8cm}
+
+\noindent
+Bonn, \dotfill \hspace{4cm} \dotfill\\
+\hspace*{2.3cm} Datum \hspace{6.8cm} Unterschrift
+
+\vspace{2.2cm}
+
+\noindent
+1.\ Gutachter*in:\ \thesisrefereeone
+
+\vspace{0.8cm}
+
+\noindent
+2.\ Gutachter*in:\ \thesisrefereetwo
+
+\clearpage
+
+% ============================================================
+% INHALT
+% ============================================================
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\include{1_Motivation}
+\include{2_Prototyping}
+% \include{3_Photolithograph}
+% \include{4_Machines}
+% \include{5_Resists}
+% \include{6_Reference}
+% \include{7_Spin}
+% \include{8_Dip}
+% \include{9_Capilar}
+% \include{10_conclusion}
+\include{Test}
+\appendix
+\printbibliography
+\listoffigures\addcontentsline{toc}{chapter}{List of Figures}
+\listoftables\addcontentsline{toc}{chapter}{List of Tables}
+% \include{Appendix}
+
+\end{document}
