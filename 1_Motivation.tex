@@ -1,17 +1,17 @@
-\chapter{HL-LHC and the LHCb experiment}
+\chapter{HiLumi-LHC and the LHCb experiment}
 The Large Hadron Collider (LHC) is a circular particle accelerator located at CERN near Geneva. It consists of a ring with a circumference of approximately $\SI{27}{\kilo\meter}$, in which proton beams are accelerated in opposite directions and brought to collision at dedicated interaction points. Around these interaction points, large detector experiments are installed to reconstruct the particles produced in the high-energy collisions. The four main experiments at the LHC are ATLAS, CMS, ALICE and LHCb. While ATLAS and CMS are general-purpose detectors and ALICE is mainly dedicated to heavy-ion physics, LHCb is optimised for precision measurements in the heavy-flavour sector~\cite{Schmitz2026-je}.\par
 A central quantity for collider experiments is the luminosity. The instantaneous luminosity $L$ describes the collision rate provided by the accelerator per unit cross-section. For a physics process with cross-section $\sigma$, the expected event rate can be written as 
 \begin{equation}
     \dot{N} = L\sigma.
 \end{equation}
-Increasing the luminosity, therefore, increases the number of recorded events for a given process. This is particularly important for rare decays and precision measurements, where the achievable statistical uncertainty is limited by the available data sample. The \textit{High-Luminosity LHC} (HL-LHC) programme is designed to increase the delivered integrated luminosity substantially, allowing LHC experiments to collect much larger data sets than in the previous running periods~\cite{Jashal:2919560}.
+Increasing the luminosity, therefore, increases the number of recorded events for a given process. This is particularly important for rare decays and precision measurements, where the achievable statistical uncertainty is limited by the available data sample. The \textit{High-Luminosity LHC} (HiLumi-LHC) programme is designed to increase the delivered integrated luminosity substantially, allowing LHC experiments to collect much larger data sets than in the previous running periods~\cite{Jashal:2919560}.
 %
 %=========================
 %
 \section{LHCb Upgrade II}
-For the LHCb experiment, the HL-LHC era is especially relevant because the physics program relies on large samples of beauty- and charm-hadron decays. LHCb studies flavour physics, rare decays, hadron spectroscopy and precision tests of the Standard Model through small deviations in precisely measured observables, for example in processes involving charge-parity violation. Such measurements benefit directly from larger data samples and improved detector performance~\cite{Schmitz2026-je}.\\
+For the LHCb experiment, the HiLumi-LHC era is especially relevant because the physics program relies on large samples of beauty- and charm-hadron decays. LHCb studies flavour physics, rare decays, hadron spectroscopy and precision tests of the Standard Model through small deviations in precisely measured observables, for example in processes involving charge-parity violation. Such measurements benefit directly from larger data samples and improved detector performance~\cite{Schmitz2026-je}.\\
 The detector is designed as a single-arm forward spectrometer and is therefore arranged mainly on one side of the proton-proton collision point, in contrast to general-purpose detectors that surround the full interaction region. This geometry is well suited for heavy-flavour physics, since beauty and charm hadrons produced at the LHC are predominantly emitted at small angles with respect to the beam axis. The detector consequently covers the forward region and reconstructs the charged and neutral particles produces within this angular acceptance~\cite{Jashal:2919560}.\par
-The LHCb Upgrade II is planned to allow operation under the much harsher conditions of the HL-LHC (see \cref{fig:luminosity}). During Run 5, the instantaneous luminosity at LHCb is expected to increase by roughly one order of magnitude from
+The LHCb Upgrade II is planned to allow operation under the much harsher conditions of the HiLumi-LHC (see \cref{fig:luminosity}). During Run 5, the instantaneous luminosity at LHCb is expected to increase by roughly one order of magnitude from
 \begin{equation*}
     \SI{10e33}{\per\square\centi\meter\per\second} \Rightarrow \SI{10e34}{\per\square\centi\meter\per\second}.
 \end{equation*}
@@ -39,7 +39,7 @@ Many heavy-flavour decay channels contain charged hadrons such as pions, kaons a
 %
 \subsubsection{RICH1 and RICH2}
 The two \textbf{R}ich \textbf{I}maging \textbf{CH}erenkov detectors, RICH1 and RICH2, are used to identify charged hadrons over a broad momentum range. Using the Cherenkov effect, if a charged particle traverses a medium faster than the speed of light in that medium, it emits photons on a cone around its trajectory. The opening angle of this cone depends on the particle velocity and the refractive index of the medium. Combining this velocity information with the momentum measured by the tracking system allows the particle mass and therefore the particle type to be derived.\par
-The LHCb detector uses two RICH detectors to cover different momentum regions: RICH1 is located upstream of the magnet and is optimized for lower to medium particle momenta, while RICH2 is located downstream of the magnet and covers higher momenta~\cite{2013}.
+The LHCb detector uses two RICH detectors to cover different momentum regions: RICH1 is located upstream of the magnet and is optimized for lower to medium particle momenta, while RICH2 is located downstream of the magnet and covers higher momenta~\cite{Adinolfi2013}.
 %
 \subsubsection{TORCH}
 TORCH, the \textbf{T}ime \textbf{O}f internally \textbf{R}eflected \textbf{CH}erenkov, is a planned time-of-flight detector for the Upgrade II detector. It is designed to improve the identification of low-momentum charged hadrons. Charged particles traversing the quartz radiator produce Cherenkov photons. These photons propagate through the quartz plate by total internal reflection and are detected at the edge of the plate by fast photon detectors. From the photon arrival time and the reconstructed track information, the particle time of flight can be determined.\par
@@ -94,60 +94,67 @@ Nevertheless, the increased radiation load, particularly affecting the readout s
 %
 \subsubsection{Mighty-Pixel}
 The Mighty-Pixel is the silicon-pixel part for the Mighty Tracker. It covers the central high-occupancy region around the beam pipe, where the hit density is too large for SciFi. The main purpose of the Mighty-Pixel is to provide high granularity tracking information with sufficient timing precision and radiation tolerance.\par
-The relevant requirements, in addition those mentioned in \Cref{sec:motivation_upgrade}, include a power consumption limited to roughly $\SI{150}{\milli\watt\per\square\centi\meter}$ and a time resolution of $\leq\SI{3}{\nano\second}$\footnote{The LHC bunch crossing frequency is $\SI{40}{\mega\hertz}$, corresponding to a time separation of $\SI{25}{\nano\second}$ between consecutive bunch crossings. A time resolution of $\sim\SI{3}{\nano\second}$ allows a $\pm 4\sigma$ timing window of about $\SI{24}{\nano\second}$, which fits within one bunch-crossing interval. For a Gaussian timing response, this corresponds to an in-time efficiency of about $\SI{99.99}{\percent}$, meaning that nearly all hits are assigned to the correct bunch crossing.}~\cite{CERN-LHCC-2021-012}.\par
+The relevant requirements, in addition those mentioned in \Cref{sec:motivation_upgrade}, include a power consumption limited to roughly $\SI{150}{\milli\watt\per\square\centi\meter}$ and a time resolution of $\leq\SI{3}{\nano\second}$~\cite{CERN-LHCC-2021-012}.\footnote{The LHC bunch crossing frequency is $\SI{40}{\mega\hertz}$, corresponding to a time separation of $\SI{25}{\nano\second}$ between consecutive bunch crossings. A time resolution of $\sim\SI{3}{\nano\second}$ allows a $\pm 4\sigma$ timing window of about $\SI{24}{\nano\second}$, which fits within one bunch-crossing interval. For a Gaussian timing response, this corresponds to an in-time efficiency of about $\SI{99.99}{\percent}$, meaning that nearly all hits are assigned to the correct bunch crossing.}\par
 These requirements motivate the use of High-Voltage Monolithic Active Pixel Sensors (HV-MAPS). They combine the sensing volume and readout electronics in one monolithic silicon chip and can provide fast charge collection by drift in a depleted region. The production sensor family developed for the Might-Pixel is called MightyPix with the current MightyPix2 as an intermediate development step toward the final production sensor.
 %
 \subsection{Mighty-Pixel Layout}
-
+The Mighty-Pixel consists of several silicon tracking layers in the central region of the downstream tracker (see \cref{fig:MP_sketch}). Current design concepts foresee six silicon layers in total, arranged as two pixel layers per tracking station with the total active silicon area covering an area of $\SIrange{8}{9}{\square\meter}$. The shape of the Mighty-Pixel region is determined by the occupancy distribution where the highest particle densities occur close to the beam pipe and are modified by the magnetic field, which spreads charged particles in the bending plane~\cite{Schmitz2026-je}. A central design goal is to minimize dead areas, since they reduce the probability of a charged particle leaving a usable hit in each tracking layer by arranging individual sensors and modules with careful overlap and minimal inactive gaps.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.7\linewidth]{figs/MP_sketch2.png}
-    \caption{Caption}
-    \label{fig:placeholder}
+    \includegraphics[width=.8\linewidth]{figs/MP_sketch2.png}
+    \caption[Schematic layout of the Mighty-Pixel]{Schematic layout of the Mighty-Pixel detector region, illustrating the nomenclature used for its hierarchical structure. A half layer is composed of several half staves, each half stave contains multiple modules and each module consists of a column of pixel chips. The stepped geometry follows the forward-detector acceptance and leaves space for the beam pip in the central region close to the pp interaction point.}
+    \label{fig:MP_sketch}
 \end{figure}
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.1\linewidth]{figs/half_stave.png}
-    \caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=0.1\linewidth]{figs/half_stave.png}
+%     \caption{Caption}
+%     \label{fig:half_stave}
+% \end{figure}
 %
+\newpage
 \subsection{Module and Stave Architecture}
+The Mighty-Pixel cannot be built from individual sensors placed independently in the detector. Instead, sensors are integrated into modules and modules are mounted on larger mechanical thermal support structures called staves (\cref{fig:stave}). This architecture is required for mechanical stability, cooling, electrical connection and reproducible large-scale production. A module groups several pixel sensors into one functional mechanical-electronic unit. In the current concepts, a module contains five sensors that are connected to a flexible printed circuit (Flex), which provides electrical routing for power, bias voltages, configuration and data readout~\cite{Schmitz2026-je}.\par
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\linewidth]{figs/Stave.png}
-    \caption{Caption}
-    \label{fig:placeholder}
+    \caption[Rendering of the Mighty-Pixel stave concept]{Rendering of the Mighty-Pixel stave illustrating the main components of its sandwich structure. The hybrid flex carries the pixel chips and provides the local electrical interconnection, while the read-out flex routes the detector signals towards the high-density interconnects (HDIs) and power boards at the end of the stave. Mechanical support and thermal management are provided by the carbon-foam core and carbon-fibre sheet, which form a lightweight support structure, together with the titanium cooling pipe used to remove the heat generated by the detector electronics.}
+    \label{fig:stave}
 \end{figure}
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.7\linewidth]{figs/StaveBuildOverview.png}
-    \caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
+The stave is the larger support structure carrying many modules. It provides mechanical support, cooling and routing services. A typical stave stack contains pixel sensors, hybrid flexes, readout flexes and carbon-based support structures on each side with cooling pipes in the middle forming a sandwich structure. Carbon fibre or carbon foam materials are attractive because of their mechanical stiffness and low mass. Cooling is necessary because the sensors and readout electronics dissipate power, while the detector must operate stably in a radiation environment~\cite{Schmitz2026-je}.\par
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=0.7\linewidth]{figs/StaveBuildOverview.png}
+%     \caption{Caption}
+%     \label{fig:stave_build_overview}
+% \end{figure}
+For this thesis, the most relevant aspect of the module and stave architecture is the close mechanical integration of high-voltage sensors with neighbouring sensors and conductive support materials. The sensor placement must be dense enough to minimize tracking inefficiencies, while still maintaining electrical safety. (A more in depth explanation in \cref{sec:pos_prob}.)
 %
 \subsection{MightyPix2 and HV-MAPS}
-
+MightyPix2 is a prototype sensor in the development chain towards the final MightyPix production sensor for the Mighty-Pixel based on High Voltage Monolithic Active Pixel Sensors (HV-MAPS). The term monolithic means that the sensitive detector volume and the readout electronics are integrated on the same silicon chip. This differs from hybrid pixel detectors, where sensor and readout chip are separate components connected by bump bonds~\cite{Schmitz2026-je}.\par
+The monolithic approach reduces material and can lower production costs for large-area detectors. This is important for the Mighty-Pixel, where several square metres of silicon detector area are required while at the same time meeting strict requirements on timing, rate capability, radiation tolerance and power consumption~\cite{CERN-LHCC-2021-012}.
 %
 \subsubsection{High-Voltage CMOS Principle}
+In the HV-CMOS concept used for these sensors, a high reverse-bias voltage is applied between the charge-collection electrode and the p-type substrate. This creates a depleted region in the sensor volume, in which free charge carriers are removed and an electric field is established. When a charged particle traverses the sensor, it creates electron-hole pairs in the silicon. Inside the depleted region, these charge carriers are separated by the electric field and transported mainly by drift towards the collection electrode, as illustrated in~\cref{fig:HVCMOS}.\par
+Drift-based charge collection is significantly faster than diffusion-based collection and is therefore essential for achieving nanosecond-scale timing.
+% In an HV-MAPS device, a high voltage is applied to the silicon substrate creating a depleted region in which mobile charge carriers are removed and an electric field is established. When a charged particle traverses the sensor, it creates electron-hole pairs in the silicon. In the depleted region, these charge carriers are separated and transported by drift in the electric field (\cref{fig:HVCMOS}).\par
+% This drift-based charge collection is much faster than diffusion-based collection, which is essential for achieving nanosecond-scale timing and for reducing charge loss after irradiation. Radiation damage can introduce defects that trap charge carriers. If the collection time is short, fewer charge carriers are trapped before reaching the collection electrode. Therefore, the high-voltage operation contributes both to timing performance and radiation tolerance~\cite{Schmitz2026-je}\cite{FouldsHolt_MT_char}.\par
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.7\linewidth]{figs/HVCMOS.png}
-    \caption{Caption}
-    \label{fig:placeholder}
+    \subcaptionbox{Cross section of a HV-MAPS with four pixels}{\includegraphics[width=0.48\linewidth]{figs/HVMAPS.png}}
+    \hspace{.02\linewidth}
+    \subcaptionbox{Cross section of one pixel cell of a monolithic pixel sensor}{\includegraphics[width=0.48\linewidth]{figs/HVCMOS.png}}
+    \caption[Schematic comparison of an HV-MAPS structure and an HV-CMOS pixel cell]{Schematic comparison of an HV-MAPS structure (a) and an HV-CMOS pixel cell (b). \textbf{(a)}: schematic cross-section of HV-MAPS device with four pixels. The light-blue n-well regions act as charge-collection electrodes, the orange region represents the p-type substrate and the integrated readout electronics are indicated inside the pixel cells~\cite{PERIC2007876}. \textbf{(b)}: cross-section of one pixel cell of a monolithic pixel sensor implemented in HV-CMOS technology. The highly doped p-type substrate is shown in grey, while the large deep n-well charge-collection electrode is shown in blue. The readout electronics are integrated inside the deep n-well using additional CMOS wells. High-voltage biasing is provided through p-type implants, leading to the formation of a depleted region in the substrate. Charge carriers generated by an ionizing particle in the depleted volume are collected mainly by drift in the electric field~\cite{Schmitz2026-je}.}
+    \label{fig:HVCMOS}
 \end{figure}
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.7\linewidth]{figs/HVMAPS.png}
-    \caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
+% In the HV-CMOS concept used for HV-MAPS, the readout electronics are placed inside a deep n-well that also acts as a charge collection electrode. CMOS electronics such as amplifiers, comparators, threshold tuning elements and local memory can be integrated inside the pixel. A particle-induced signal is collected by the electrode, amplified and discriminated in the pixel electronics~\cite{Schmitz2026-je}.
 %
 \subsubsection{Charge Collection and Timing}
+The timing performance of the Mighty-Pixel is connected directly to the charge collection process. The LHC bunch crossing
 %
 \subsubsection{MightyPix2 Design}
 %
-\subsection{Positioning Problems}
+\subsection{Positioning Problems}\label{sec:pos_prob}
 %
 \subsubsection{Sensor-to-Sensor Spacing}
 %
