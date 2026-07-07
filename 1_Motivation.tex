@@ -154,35 +154,74 @@ In addition to acting as the charge-collection electrode, the deep n-well also c
 The same high-voltage operation that enables fast radiation-tolerant charge collection also introduces constraints for the mechanical and electrical integration of the sensor. High electric fields can occur near the sensor periphery, so guard-ring structures are required to control the potential distribution at the edges. Moreover, the high voltage is not confined to an abstract internal sensor volume but is also relevant for the backside and diced edges of the chip. Electrical insulation of these surfaces become a module-design requirement, directly connecting the sensor principle to the coating studies performed in this thesis.
 %
 \subsubsection{MightyPix2 Design}
-MightyPix2 is designed as a development step towards the final MightyPix sensor. It contains an analogue pixel matrix and a digital periphery. The analogue matrix consists of pixels containing the sensing diode and front-end electronics, while the digital periphery handles configuration, data processing and readout.\par
-The project material gives a MightyPix2 analogue matrix of $192\times244$ pixels and a pixel size of $\SI{84}{\mu\meter}\times\SI{84}{\mu\meter}$. The sensor size is approximately $\SI{2}{\centi\meter}\times\SI{1.66}{\centi\meter}$, smaller than the final production-sensor target. The final MightyPix sensor is expected to build on the MightyPix2 experience and other predecessor sensors~\cite{Schmitz2026-je, Peric, CERN-LHCC-2021-012}.\par
-Since real MightyPix sensors are complex and valuable, dummy heater structures are used in parallel for production and integration studies. These dummy heaters reproduce key mechanical and electrical layout features, such as pad positions, but do not function as particle detectors. They allow coating, placement, glueing and electrical test procedures to be developed before applying them to real sensors. (More on these dummy heaters in~\Cref{sec:prototyping})
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.5\linewidth]{figs/mightypix2.png}
-    \caption{Caption}
-    \label{fig:mightypix2}
-\end{figure}
+MightyPix2 is designed as a development step towards the final MightyPix sensor. It contains an analogue pixel matrix and a digital periphery (see \cref{fig:mightypix2}). The analogue matrix consists of pixels containing the sensing diode and front-end electronics, while the digital periphery handles configuration, data processing and readout.\par
+The project material gives a MightyPix2 analogue matrix of $192\times244$ pixels and a pixel size of $\SI{84}{\micro\meter}\times\SI{84}{\micro\meter}$. The sensor size is approximately $\SI{2}{\centi\meter}\times\SI{1.66}{\centi\meter}$, smaller than the final production-sensor target. The final MightyPix sensor is expected to build on the MightyPix2 experience and other predecessor sensors~\cite{Schmitz2026-je, Peric, CERN-LHCC-2021-012}.\par
+Since real MightyPix sensors are complex and valuable, dummy heater structures are used in parallel for production and integration studies. These dummy heaters reproduce key mechanical and electrical layout features, such as pad positions, but do not function as particle detectors. They allow coating, placement, glueing and electrical test procedures to be developed before applying them to real sensors. (More on these dummy heaters in and how they compare to the MightyPix2 in~\Cref{sec:prototyping})
+
 %
 \subsection{Positioning Problems}\label{sec:pos_prob}
-The Mighty-Pixel layout requires dense sensor placement to minimize dead areas. At the same time, the use of high-voltage monolithic sensors creates electrical constraints. The resulting positioning problem is therefore not only mechanical, but also electrical.\par
-There are two main critical interfaces. The first is the gap between neighbouring sensor. The second is the interface between the high-voltage sensor and the conductive support structure, especially carbon-fibre-based materials. Both interfaces are relevant for the coating studies performed in this thesis.
+The Mighty-Pixel layout requires dense sensor placement to minimize dead areas, while the use of high-voltage monolithic sensors introduces additional electrical constraints. The resulting positioning problem is therefore not purely mechanical, but also determined by the electric-field configuration around the biased surfaces.\par
+In particular, two interfaces are critical for the module design: the air gap between neighbouring sensors and the interface between the high-voltage sensor and the conductive support structure, especially the carbon-fibre-based materials. Both interfaces can act as possible discharge paths and motivate the coating studies performed in this thesis.
 %
 \subsubsection{Sensor-to-Sensor Spacing}
 Neighbouring MightyPix sensors must be placed close together to avoid detection gaps. In the module and stave layout, rows of modules can be shifted relative to each other to reduce dead areas in one direction. However, in the perpendicular direction, the minimum gap between sensor edges is limited by the electrical-breakdown constraints.\par
-Since high voltage is present at the sensor backside and diced edges, two uninsulated neighbouring sensors at different electric potentials separated by a small air gap can form a high-field configuration. 
+\newpage
+Since high voltage is present at the sensor backside and diced edges, two uninsulated neighbouring sensors at different electric potentials\footnote{This could occur if one sensor fails or if a fault occurs in the high-voltage supply.} separated by a small air gap can form a high-field configuration which would cause the gap to undergo electrical breakdown if a self-sustaining electron avalanche develops. For an idealized homogeneous electric field between two parallel electrodes, the breakdown voltage in a gas is described by Paschen's law,
+\begin{align}
+    V_{\mathrm{B}} &= \frac{Bpd}{\ln{(Apd)}-\ln{\left[ \ln\left(1+\frac{1}{\gamma}\right) \right]}}\label{equ:paschen}\\
+    A &= \frac{\sigma}{k_B T}\\
+    B &= \frac{\varepsilon_i\sigma}{e_c k_B T} 
+\end{align}
+where $V_B$ is the breakdown voltage, $p$ is the gas pressure, $d$ is the electrode spacing, $A$ and $B$ are gas-dependent Townsend coefficients, $\gamma$ is the secondary electron emission coefficient (the yield of electrons from the positive ion impact on the cathode), $\sigma$ is the ionization cross-section, $\varepsilon_i$ is the ionization potential and $T$ is the gas temperature in Kelvin. The dependence on the product $pd$ reflects the role of the particle mean free path in the gas. For very small gaps, electrons cannot undergo enough ionizing collisions before reaching the opposite electrode, whereas for larger gaps a higher voltage is required to sustain the avalanche~\cite{Galli_Paschen_law}.\par
+For the estimates shown in~\cref{fig:paschencurve}, air at atmospheric pressure was assumed with $p = \SI{101.325}{\kilo\pascal}$~\cite{NIST_atm}, $A = \SI{112.5}{\per\kilo\pascal\centi\meter}$, $B = \SI{2737.5}{\volt\per\kilo\pascal\centi\meter}$ and $\gamma = 0.01$~\cite{IEEE_Trans_electr_ins}.\par
+Solving~\cref{equ:paschen} for an applied voltage of $\SI{500}{\volt}$\footnote{The nominal operating voltage is expected to be around $\SI{250}{\volt}$. Any estimates in this thesis are evaluated at $\SI{500}{\volt}$, which is twice the expected operating voltage, to include a conservative safety margin.} gives two crossings of the Paschen curve at approximately $\SI{5.6}{\micro\meter}$ and $\SI{42.9}{\micro\meter}$. In the interval between these values, the idealized breakdown voltage is below $\SI{500}{\volt}$, so a discharge through air in the parallel-plate approximation would be expected. The upper crossing therefore gives an estimate for the minimum air gap required to avoid gas breakdown at this voltage.\par
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.5\linewidth]{figs/PaschenCurveAir.png}
-    \caption{Caption}
+    \includegraphics[width=0.7\linewidth]{plots/paschen/paschen_curve_air_1bar.pdf}
+    \caption[Paschen curve for air at 1 atm]{Paschen curve for air at atmospheric pressure for $p = \SI{101.325}{\kilo\pascal}$~\cite{NIST_atm}, $A = \SI{112.5}{\per\kilo\pascal\centi\meter}$, $B = \SI{2737.5}{\volt\per\kilo\pascal\centi\meter}$ and $\gamma = 0.01$. The horizontal line indicates an applied voltage of $\SI{500}{\volt}$. The two intersections define the gap range in which the idealized breakdown voltage is below the applied voltage.}
     \label{fig:paschencurve}
 \end{figure}
-%
-\subsubsection{Sensor-to-Support Insulation}
+To move beyond the idealized Paschen geometry, a simplified two-dimensional electrostatic simulation was performed for two biased silicon bodies separated by an air gap, each featuring serrated edge structures representative of diced sensor edges of around $\SI{5}{\micro\meter}$~\cite{padeken_dice}. The left body was set to $\SI{500}{\volt}$ and the right body to ground simulating a total failure of the right sensor. While the nominal flat gap was chosen as $\SI{40}{\micro\meter}$, the serrations reduce the minimum local air gap to $\SI{30}{\micro\meter}$ (\cref{fig:paschen_sim}).\par
 \begin{figure}[ht]
     \centering
-    \subcaptionbox{}{\includegraphics[width=0.49\linewidth]{figs/chip_carbon_nopas.png}}
-    \subcaptionbox{}{\includegraphics[width=0.49\linewidth]{figs/chip_carbon_pas.png}}
-    \caption{Caption}
-    \label{fig:placeholder}
+    \subcaptionbox{Electrostatic potential\label{fig:paschen_potential}}{\includegraphics[width=0.49\linewidth]{plots/paschen/electrostatic_potential.pdf}}
+    \subcaptionbox{Electric field magnitude\label{fig:paschen_e_field}}{\includegraphics[width=0.49\linewidth]{plots/paschen/electric_field.pdf}}
+    \subcaptionbox{Serrated edge profiles\label{fig:paschen_serr_edge}}{\includegraphics[width=0.5\linewidth]{plots/paschen/serrated_edges.pdf}}
+    \caption{Two-dimensional electrostatic simulation of two silicon bodies separated by an air gap of $\SI{40}{\micro\meter}$ with serrated facing edges. The left body is held at $\SI{500}{\volt}$ and the right body at ground potential. The panels show the electrostatic potential (a), the electric-field magnitude (b) and the corresponding serrated edge profiles (c).}
+    \label{fig:paschen_sim}
 \end{figure}
+The electrostatic potential distribution $\phi$ in the simulation domain is obtained by solving the Laplace equation
+\begin{equation}
+    \nabla^2\phi = 0,
+\end{equation}
+which applies in regions without free charge. Dirichlet boundary conditions are imposed on the silicon bodies, fixing the potential to $\SI{500}{\volt}$ and $\SI{0}{\volt}$ on the left and right electrodes, respectively, while the outer boundary of the finite simulation domain is kept at fixed potential of $\SI{0}{\volt}$. Since the boundary is placed away from the gap region, the local field between the two silicon bodies is dominated by the imposed electrode potentials.
+Once the potential is determined, the electric field $\mathbf{E}$ is calculated from the gradient of the potential,
+\begin{equation}
+    \mathbf{E} = -\nabla\phi.
+\end{equation}
+This approach assumes a static field and ignores any charges in the air gap, which is suitable for studying the field before breakdown occurs.\par
+Solving the Laplace equation for this geometry shows that the electric field is no longer homogeneous, but becomes locally enhanced at the edges, serration tips and in the narrowest gap region, as illustrated in~\cref{fig:paschen_e_field}. The field enhancement arises from geometric curvature of the serrated edges, which concentrates electric field lines and increases the local field magnitude~\cite{Moore2003-rk}.\par
+Using the minimum local gap $d_\mathrm{min} = \SI{30}{\micro\meter}$ in Paschen's law yields a breakdown voltage of only $V_\mathrm{B}\approx\SI{415.48}{\volt}$ for air at atmospheric pressure. Since the applied voltage difference of $\SI{500}{\volt}$ exceeds this value, the simplified Paschen estimate indicates that gas breakdown is possible in this geometry. In addition, the maximum electric-field magnitude inside the air gap is extracted from the simulation which yields a maximum electric field in the gap region of about $E_\mathrm{max}=\SI{21.92}{\mega\volt\per\meter}$.
+This value is compared with an effective average breakdown field from the Paschen voltage at the minimum local gap,
+\begin{equation}
+    E = \frac{\Delta V}{d} = \frac{V_\mathrm{B}}{d_\mathrm{min}} =: E_\mathrm{B,eff},
+\end{equation}
+which describes the electric field between two parallel conducting plates~\cite{lumenlearningElectricPotential} and is only about $\SI{13.85}{\mega\volt\per\meter}$. Although this comparison is only an approximate local criterion, it shows that the serrated edges increase the local electric field beyond the value expected from a flat parallel-plate gap.\par
+Consequently, the spacing between neighbouring sensors cannot be determined from mechanical placement constraints alone. Electrical insulation of the biased and diced sensor edges is therefore required to suppress discharges and to permit the small sensor gaps needed in the Mighty-Pixel module layout.
+%
+\subsubsection{Sensor-to-Support Insulation}
+The second positioning problem concerns the sensor-to-support interface. The Mighty-Pixel support structure contains carbon-based materials, such as carbon fibre or carbon foam, because they provide good mechanical stability at low material budget. However, carbon fibre is electrically conductive. If the high-voltage sensor is to be placed on or close to the conductive support, the glue layer and any additional insulating layer is needed to prevent leakage current and electrical breakdown (and putting the whole structure under high voltage for that matter).\par
+A simplified stack consists of the sensor, glue and carbon-fibre support (\cref{fig:stack}). Without any additional insulation layer, the electrical safety relies only on the glue and the geometrical separation. This may not be sufficiently robust for detector production and long-term operation~\cite{padeken_dice}. Therefore, dedicated coating on the sensor backside is investigated as a possible solution.
+\begin{figure}[ht]
+    \centering
+    \subcaptionbox{Simplified Stack}{\includegraphics[width=0.49\linewidth]{figs/chip_carbon_nopas.png}}
+    \subcaptionbox{Simplified Stack with additional insulation layer (orange)}{\includegraphics[width=0.49\linewidth]{figs/chip_carbon_pas.png}}
+    \caption{Sketch of a simplified stack consisting of the sensor (yellow), glue, carbon-fibre and proposed possible insulation (orange).}
+    \label{fig:stack}
+\end{figure}
+%
+\subsection{Possible solutions and Scope of this Thesis}
+Several approaches can be considered to solve the high-voltage positioning problems. One possibility is to rely on the glue layer between the sensor and the support structure. However, this does not directly solve the problem of the exposed high-voltage edges and may not provide sufficient reproducibility. Another possibility is to modify the sensor processing or assembly concept at wafer level, but this requires compatibility with the sensor production chain.\par
+A practical solution is to add an insulation coating to the sensor itself. Candidate coating technologies include polyimide coating and parylene coating. Polyimide can be applied by liquid process such as spin coating, where the layer thickness is controlled by viscosity, rotation speed and process parameters. Parylene is deposited from the gas phase and is known for conformal coating of three-dimensional surfaces. Both approaches are attractive, but introduce challenges.\par
+For the Mighty-Pixel application, the coating must insulate the backside and diced edges of the sensor. This is more demanding than coating a flat surface. The sensor top side contains pads and sensitive structures that must not be covered unintentionally. Therefore, masking, edge coverage, layer uniformity and compatibility with later glueing and assembly steps are central issues.\par
+This thesis investigates coating and insulation strategies using dummy heater structures as experimental prototypes that reproduce relevant mechanical and layout features of the MightyPix2 while allowing process development without risking real sensors. They are used to study coating procedures, removal from carriers, visual quality, height profiles and electrical behaviour. The goal is to evaluate whether the investigated coatings can provide a practical route towards safe dense sensor integration in the Mighty-Pixel modules.
